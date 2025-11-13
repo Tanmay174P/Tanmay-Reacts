@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React Basics</title>
+    <title>ChatBot</title>
   </head>
   <body>
     <div class="js-container"></div>
@@ -13,6 +13,15 @@
     <script type="text/babel">
       const button = <button>hello</button>;
       const paragraph = <p>paragraph of text</p>;
+
+      function ChatInput(){
+        return (
+            <div>
+              <input placeholder= 'Enter your text here' />
+              <button>Send</button>
+            </div>
+        );
+      }
 
       const div = (
         <div>
