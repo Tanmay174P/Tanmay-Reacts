@@ -11,9 +11,8 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      const button = <button>hello</button>;
-      const paragraph = <p>paragraph of text</p>;
 
+      
       function ChatInput(){
         return (
             < >
@@ -40,45 +39,78 @@
         )
       }
 
-      function App() {
-        const ChatMessages = [
+      function ChatMessages() {
+          
+          const chatMessages = [
           {
-            message:"hello",
-            sender: "user"
+            message:'hello',
+            sender: 'user',
+            id : 'id1'
           },
           {
-            message:"Hello! How can I help you?",
-            sender: "Bot"
+            message:'Hello! How can I help you?',
+            sender: 'Bot',
+            id : 'id2'
           },
           {
-            message : "can you tell me todays date",
-            sender: "user"
+            message : 'can you tell me todays date',
+            sender: 'user',
+            id : 'id3'
           },
           {
-            message :"Today is November 14",
-            sender:"Bot" 
+            message :'Today is November 14',
+            sender:'Bot',
+            id : 'id4'
           },   
-        ]
+        ];
 
-        const ChatMessageComponent = ChatMessages.map( (ChatMessage)=>{
-          return (
-            <ChatMessage
-              message = {ChatMessage.message}
-              sender = {ChatMessage.sender} 
-            />
-          );
-        })
+        // const ChatMessageComponent = ChatMessages.map( (ChatMessage)=>{
+        //   return (
+        //     <ChatMessage
+        //       message = {ChatMessage.message}
+        //       sender = {ChatMessage.sender} 
+        //     />
+        //   );
+        // })
+
+        function sendMessage (){
+            chatMessages.push({
+              message: 'test',
+              sender: 'user',
+              id: crypto.randomUUID()
+            })
+            console.log(chatMessages);
+        }
+
+        return(
+          <>
+            <button onClick={sendMessage} >Send message</button>
+            {chatMessages.map( (chatmessage)=>{
+              return (
+                <ChatMessage
+                  message = {chatmessage.message}
+                  sender = {chatmessage.sender} 
+                  key = {chatmessage.id}
+                  />
+              );
+            })}
+          </>    
+        );
+      }
+
+      function App() {
+        
 
         return(
           <>
             <ChatInput/>
-            {ChatMessageComponent} 
-            </>
+            <ChatMessages/>
+          </>
         );    
       }
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(<App/>);
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
