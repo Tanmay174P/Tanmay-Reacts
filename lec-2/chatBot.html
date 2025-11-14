@@ -16,21 +16,84 @@
 
       function ChatInput(){
         return (
-            <div>
-              <input placeholder= 'Enter your text here' />
+            < >
+              <input 
+                placeholder= 'Ask anything to ChatBot' 
+                size="30" 
+              />
               <button>Send</button>
-            </div>
+            </> 
         );
       }
 
-      const div = (
-        <div>
-          <button>hello</button>
-          <p>paragraph of text {2 + 2}</p>
-        </div>
-      );
+      // function ChatMessage (props){} 
+      // // (props)---> ({message,sender}) //Also Destructuring
+
+        // console.log(props);
+
+        // const message = props.message;
+        // const sender = props.sender;
+        // const {message,sender} =props; //Destructuring
+    
+        function ChatMessage ({message,sender}){
+
+        /*
+        if (sender === "Bot"){
+          return (
+            <div>
+               <img 
+            src="assets/robot.png"
+            width = "50"
+            />
+            <span>{message}</span>
+          </div>
+          );
+        }
+        */
+
+        return(
+          <div>
+            {sender === "Bot" && (
+              <img src="assets/robot.png" width = "50"/>
+            )}
+            <span> {message} </span>
+            {sender === "user" && (
+              <img src="assets/user.png" width = "50"/>
+            )}  
+          </div>
+        )
+      }
+
+      function App() {
+        return(
+          <>
+            <ChatInput/>
+            <ChatMessage 
+              message="hello" 
+              sender="user"
+            />
+            <ChatMessage
+              message="Hello! How can I help you?" 
+              sender="Bot"
+            />
+            <ChatMessage
+              message = "can you tell me todays date"
+              sender="user"
+            />
+            <ChatMessage 
+              message = "Today is November 14" 
+              sender="Bot"  
+            />
+            </>
+
+            // <div>
+            //    {ChatInput()} 
+            // </div>
+        );    
+      }
+
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(div);
+      ReactDOM.createRoot(container).render(<App/>);
     </script>
   </body>
 </html>
