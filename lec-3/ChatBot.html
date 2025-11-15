@@ -14,11 +14,17 @@
 
       
       function ChatInput(){
+        function saveInputText(event){
+          // console.log( event.target.value);
+          
+        }
+
         return (
             < >
               <input 
                 placeholder= 'Ask anything to ChatBot' 
                 size="30" 
+                onChange = {saveInputText}
               />
               <button>Send</button>
             </> 
@@ -40,8 +46,8 @@
       }
 
       function ChatMessages() {
-          
-          const chatMessages = [
+
+        const [chatMessages,setChatMessages] = React.useState([
           {
             message:'hello',
             sender: 'user',
@@ -62,8 +68,23 @@
             sender:'Bot',
             id : 'id4'
           },   
-        ];
+        ]);
+        // const [chatMessages,setChatMessages] = array; //Array Destruction
+        // const chatMessages = array[0]; // The Current Data
+        // const setChatMessages = array[1]; // Updater Function (update the HTML)
+        
 
+          function sendMessage (){
+            setChatMessages([
+              ...chatMessages,
+              {
+                message: 'test',
+                sender: 'user',
+                id: crypto.randomUUID()
+              }
+            ])
+        }
+        
         // const ChatMessageComponent = ChatMessages.map( (ChatMessage)=>{
         //   return (
         //     <ChatMessage
@@ -73,14 +94,7 @@
         //   );
         // })
 
-        function sendMessage (){
-            chatMessages.push({
-              message: 'test',
-              sender: 'user',
-              id: crypto.randomUUID()
-            })
-            console.log(chatMessages);
-        }
+
 
         return(
           <>
