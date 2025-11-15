@@ -157,6 +157,16 @@
       }
 
       function ChatMessages({chatMessages}) {
+        const chatMessagesRef = React.useRef(null);
+
+        React.useEffect(()=>{
+          // console.log('updated');
+          // console.log(chatMessagesRef.current);
+          const containerElem = chatMessagesRef.current;
+          if(containerElem){
+            containerElem.scrollTop = containerElem.scrollHeight;
+          }
+        },[chatMessages]) //[chatMessages] -> Dependency array {when useEffect should run}
 
         // const [chatMessages,setChatMessages] = array; //Array Destruction
         // const chatMessages = array[0]; // The Current Data
@@ -173,7 +183,8 @@
         // })
 
         return(
-          <div className = 'chat-messages-container'>
+          <div className = 'chat-messages-container'
+          ref ={chatMessagesRef}>
             {chatMessages.map( (chatmessage)=>{
               return (
                 <ChatMessage
