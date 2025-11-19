@@ -33,7 +33,7 @@ function App() {
             <ChatMessages
               chatMessages = {chatMessages}
             />
-            <ChatInput 
+          0  <ChatInput 
               chatMessages = {chatMessages}
               setChatMessages = {setChatMessages}
             />
