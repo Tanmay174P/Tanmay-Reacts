@@ -3,6 +3,24 @@ import './Home.css';
 import { products } from '../../starting-code/data/products';
 
 const Home = () => {
+
+  // fetch('http://localhost:3000/api/products')
+  //   .then((response) => {
+  //     response.json().then((data) => {
+  //       console.log(data);
+  //     })
+  //   })
+
+  //shortcut with these promises -> 
+
+  fetch('http://localhost:3000/api/products')
+    .then((response) => {
+       return response.json();
+    }).then((data) => {
+      console.log(data);
+    })
+
+
   return (
     <>
       <title>Ecommerce Project</title>
