@@ -1,10 +1,11 @@
+import { useEffect,useState } from 'react';
 import axios from 'axios'
 import Header from '../Components/Header'
 import './Home.css';
-import { products } from '../../starting-code/data/products';
 
 const Home = () => {
 
+  const [products,setProducts] = useState([]);
   // fetch('http://localhost:3000/api/products')
   //   .then((response) => {
   //     response.json().then((data) => {
@@ -25,10 +26,12 @@ const Home = () => {
   // It is a cleaner way to request/request data to the backend
   // npm install axios@1.8.4
 
-  axios.get('http://localhost:3000/api/products')
-    .then((response) => {
-      console.log(response.data); 
-    });
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/products')
+      .then((response) => {
+        setProducts(response.data)
+      });
+  }, [])
 
 
   return (
