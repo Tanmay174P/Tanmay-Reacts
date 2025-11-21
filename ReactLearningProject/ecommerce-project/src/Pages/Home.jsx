@@ -1,3 +1,4 @@
+import axios from 'axios'
 import Header from '../Components/Header'
 import './Home.css';
 import { products } from '../../starting-code/data/products';
@@ -13,12 +14,21 @@ const Home = () => {
 
   //shortcut with these promises -> 
 
-  fetch('http://localhost:3000/api/products')
+  // fetch('http://localhost:3000/api/products')
+  //   .then((response) => {
+  //      return response.json();
+  //   }).then((data) => {
+  //     console.log(data);
+  //   })
+
+  //axios -- it is a npm package.
+  // It is a cleaner way to request/request data to the backend
+  // npm install axios@1.8.4
+
+  axios.get('http://localhost:3000/api/products')
     .then((response) => {
-       return response.json();
-    }).then((data) => {
-      console.log(data);
-    })
+      console.log(response.data); 
+    });
 
 
   return (
