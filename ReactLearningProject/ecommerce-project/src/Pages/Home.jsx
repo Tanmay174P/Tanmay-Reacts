@@ -1,11 +1,12 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios'
 import Header from '../Components/Header'
 import './Home.css';
 
 const Home = () => {
 
-  const [products,setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
   // fetch('http://localhost:3000/api/products')
   //   .then((response) => {
   //     response.json().then((data) => {
@@ -27,17 +28,25 @@ const Home = () => {
   // npm install axios@1.8.4
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/products')
+    axios.get('http://localhost:3000/api/products')  //API -> Application Programming Interface
       .then((response) => {
         setProducts(response.data)
       });
+
+    axios.get('http://localhost:3000/api/cart-items')
+      .then((response) => {
+        setCart(response.data);
+      })
   }, [])
+
+
+
 
 
   return (
     <>
       <title>Ecommerce Project</title>
-      <Header />
+      <Header cart={cart}/>
       <div className="home-page">
         <div className="products-grid">
           {products.map(((product) => {
