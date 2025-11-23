@@ -34,7 +34,7 @@ const Header = ({cart}) => {
 
                 <Link className="cart-link header-link" to="/checkout">
                     <img className="cart-icon" src="images/icons/cart-icon.png" />
-                    <div className="cart-quantity">{totalQuantity}</div>
+                    <div className="cart-quantity"> {Number.isFinite(totalQuantity) ? totalQuantity : 0} </div>
                     <div className="cart-text">Cart</div>
                 </Link>
             </div>

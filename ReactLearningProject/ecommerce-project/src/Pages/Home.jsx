@@ -3,10 +3,10 @@ import axios from 'axios'
 import Header from '../Components/Header'
 import './Home.css';
 
-const Home = () => {
+const Home = ({cart}) => {
 
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+
   // fetch('http://localhost:3000/api/products')
   //   .then((response) => {
   //     response.json().then((data) => {
@@ -32,16 +32,7 @@ const Home = () => {
       .then((response) => {
         setProducts(response.data)
       });
-
-    axios.get('/api/cart-items')
-      .then((response) => {
-        setCart(response.data);
-      })
   }, [])
-
-
-
-
 
   return (
     <>
