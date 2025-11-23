@@ -28,12 +28,12 @@ const Home = () => {
   // npm install axios@1.8.4
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/products')  //API -> Application Programming Interface
+    axios.get('/api/products')  //API -> Application Programming Interface
       .then((response) => {
         setProducts(response.data)
       });
 
-    axios.get('http://localhost:3000/api/cart-items')
+    axios.get('/api/cart-items')
       .then((response) => {
         setCart(response.data);
       })
