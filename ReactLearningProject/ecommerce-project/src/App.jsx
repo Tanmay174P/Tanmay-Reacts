@@ -3,11 +3,11 @@ import { Routes, Route } from 'react-router';
 import {useEffect,useState} from 'react'; 
 import CheckoutPage from './Pages/Checkout/CheckoutPage';
 import './App.css'
-import OrdersPage from './Pages/OrdersPage'
+import  OrdersPage  from './Pages/Orders/OrdersPage';
 import Home from './Pages/Home/Home';
 import TrackingPage from './Pages/TrackingPage';
 
-function App() {
+function App() {  
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
