@@ -16,12 +16,14 @@ const CheckoutPage = ({ cart }) => {
         ).then((response) => {
             setDeliveryOptions(response.data);
         })
+
+        axios.get('/api/payment-summary')
+            .then((response) => {
+                setPaymentSummary(response.data)
+            });
     }, [])
 
-    axios.get('/api/payment-summary')
-        .then((response) => {
-            setPaymentSummary(response.data)
-        });
+
 
     return (
         <>
@@ -156,7 +158,7 @@ const CheckoutPage = ({ cart }) => {
                                 </div>
 
                                 <div className="payment-summary-row total-row">
-                                    <div>Order total:</div> 
+                                    <div>Order total:</div>
                                     <div className="payment-summary-money">{formatMoney(paymentSummary.totalCostCents)}</div>
                                 </div>
 
