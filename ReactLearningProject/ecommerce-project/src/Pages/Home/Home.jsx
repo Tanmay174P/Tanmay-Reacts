@@ -4,7 +4,7 @@ import Header from '../../Components/Header'
 import './Home.css';
 import ProductsGrid from './ProductsGrid';
 
-const Home = ({cart}) => {
+const Home = ({ cart }) => {
 
   const [products, setProducts] = useState([]);
 
@@ -29,18 +29,20 @@ const Home = ({cart}) => {
   // npm install axios@1.8.4
 
   useEffect(() => {
-    axios.get('/api/products')  //API -> Application Programming Interface
-      .then((response) => {
-        setProducts(response.data)
-      });
+    const fetchHomeData = async () => {  // getHoemData = ..
+      const response = await axios.get('/api/products');  //API -> Application Programming Interface  
+      setProducts(response.data);
+    }
+
+    fetchHomeData();
   }, [])
 
   return (
     <>
       <title>Ecommerce Project</title>
-      <Header cart={cart}/>
+      <Header cart={cart} />
       <div className="home-page">
-        <ProductsGrid products={products}/>
+        <ProductsGrid products={products} />
       </div>
     </>
   );
