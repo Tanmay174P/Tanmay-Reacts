@@ -9,9 +9,11 @@ const OrderPage = ({ cart }) => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/orders?expand=products').then((response) => {
-            setOrders(response.data)
-        });
+        const fetchOrderData = async () => {
+            const response = await axios.get('/api/orders?expand=products');
+            setOrders(response.data);
+        }
+        fetchOrderData();
     }, []);
 
     return (
@@ -45,7 +47,7 @@ const OrderPage = ({ cart }) => {
                                 </div>
 
                                 <div className="order-details-grid">
-                                    {order.products.map((orderProduct)  => {
+                                    {order.products.map((orderProduct) => {
                                         return (
                                             <Fragment key={orderProduct.product.id}>
                                                 <div className="product-image-container">
@@ -54,7 +56,7 @@ const OrderPage = ({ cart }) => {
 
                                                 <div className="product-details">
                                                     <div className="product-name">
-                                                    {orderProduct.product.name}
+                                                        {orderProduct.product.name}
                                                     </div>
                                                     <div className="product-delivery-date">
                                                         Arriving on: {dayjs(orderProduct.estimatedDeliveryTimeMs).format("MMMM D")}
