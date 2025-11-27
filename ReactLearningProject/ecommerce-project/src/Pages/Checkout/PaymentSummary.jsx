@@ -7,7 +7,7 @@ const PaymentSummary = ({paymentSummary}) => {
                 Payment Summary
             </div>
 
-            {paymentSummary && (
+            {paymentSummary && (    
                 <>
                     <div className="payment-summary-row">
                         <div>Items ({paymentSummary.totalItems}):</div>
