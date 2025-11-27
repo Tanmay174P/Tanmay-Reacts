@@ -12,6 +12,12 @@ export default function OrderSummary({ cart, deliveryOptions, loadCart }) {
             return deliveryOption.id === cartItem.deliveryOptionId;
           });
 
+        // const updateCartItem = async () => {
+        //   await axios.put(`/api/cart-items/${cartItem.productId}`);
+        //   await loadCart();
+        // };
+
+        // Deleting through backened
         const deleteCartItem = async () => {
           await axios.delete(`/api/cart-items/${cartItem.productId}`);
           await loadCart();
@@ -38,7 +44,8 @@ export default function OrderSummary({ cart, deliveryOptions, loadCart }) {
                   <span>
                     Quantity: <span className="quantity-label">{cartItem.quantity}</span>
                   </span>
-                  <span className="update-quantity-link link-primary">
+                  <span className="update-quantity-link link-primary"
+                  >
                     Update
                   </span>
                   <span className="delete-quantity-link link-primary"
