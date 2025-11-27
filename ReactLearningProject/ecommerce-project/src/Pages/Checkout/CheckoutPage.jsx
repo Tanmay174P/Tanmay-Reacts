@@ -67,7 +67,7 @@ const CheckoutPage = ({ cart, loadCart }) => {
 
                 <div className="checkout-grid">
                     <OrderSummary cart={cart} deliveryOptions={deliveryOptions} products={products} loadCart={loadCart} />
-                    <PaymentSummary paymentSummary={paymentSummary} />
+                    <PaymentSummary paymentSummary={paymentSummary} loadCart={loadCart} />
                 </div>
             </div>
         </>
