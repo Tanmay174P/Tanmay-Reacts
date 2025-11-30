@@ -10,7 +10,6 @@ type HeaderProps = {
   }[];
 }
 
-
 export default function Header({ cart }:HeaderProps) {
   let totalQuantity = 0;
 
