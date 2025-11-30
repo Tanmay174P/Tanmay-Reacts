@@ -78,8 +78,8 @@ const OrderPage = ({ cart }) => {
                                                     </a>
                                                 </div>
                                             </Fragment>
-                                        );
-                                    })};
+                                        )
+                                    })}
                                 </div>
                             </div>
                         )
