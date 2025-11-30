@@ -64,7 +64,7 @@ describe('Home Component', () => {
 
         expect (
             within(productContainers[1]
-            ).getByText('Intermediate Size Basketballg')
+            ).getByText('Intermediate Size Basketball')
         ).toBeInTheDocument();
     });
 
