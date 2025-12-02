@@ -11,7 +11,7 @@ type HeaderProps = {
 }
 
 export default function Header({ cart }:HeaderProps) {
-  let totalQuantity = 0 ;
+  let totalQuantity = 0;
 
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
